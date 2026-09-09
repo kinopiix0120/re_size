@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="manifest.json">
+  <title>画像リサイズ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="main">
+
+    <h1>画像リサイズ</h1>
+
+    <label for="imageInput">画像を選択</label>
+    <input type="file" id="imageInput" accept=".jpg,.jpeg,.png,.webp,.heic,.heif">
+
+    <div id="originalInfo" class="info" hidden>
+      <h2>元画像</h2>
+
+      <p id="originalDimensions"></p>
+      <p id="originalSize"></p>
+      <p id="originalFormat"></p>
+    </div>
+
+    <div id="resizeInfo" class="info" hidden>
+      <h2>リサイズ後</h2>
+
+      <label for="widthInput">横幅</label>
+      <input type="number" id="widthInput" min="1" placeholder="1280">
+      <span>px</span>
+
+      <p id="resizeDimensions"></p>
+      <p id="estimatedSize"></p>
+
+      <label for="formatSelect">出力形式</label>
+      <select id="formatSelect">
+        <option value="image/jpeg">JPG</option>
+        <option value="image/png">PNG</option>
+        <option value="image/webp">WebP</option>
+      </select>
+      <br><br>
+      <button id="resizeButton">リサイズする</button>
+    </div>
+
+
+
+
+  </div>
+
+  <script src="heic2any.min.js"></script>
+  <script src="script.js"></script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js");
+    }
+  </script>
+
+</body>
+
+</html>
